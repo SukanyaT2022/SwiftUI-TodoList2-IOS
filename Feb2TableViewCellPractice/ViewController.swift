@@ -38,9 +38,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 }
 extension ViewController{
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "SecondScreenUIViewController") as! SecondScreenUIViewController
+        detailVC.holdStudentName = studentName[indexPath.row]
+        detailVC.holdStudentImage = UIImage(named: studentImage[indexPath.row])
+        
+       // line below connect or push viewcontrollr with SecondScreenUIViewController
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return studentName.count
     }
@@ -57,4 +63,5 @@ extension ViewController{
         cell.studentImageView.image = UIImage(named: studentImage[indexPath.row])
         return cell
     }
+    
 }

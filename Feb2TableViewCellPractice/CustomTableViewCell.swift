@@ -13,5 +13,11 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-
+    
+//    this function make image circle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.studentImageView.layer.cornerRadius =  self.studentImageView.frame.width / 2
+        self.studentImageView.layer.masksToBounds = true
+    }
 }
